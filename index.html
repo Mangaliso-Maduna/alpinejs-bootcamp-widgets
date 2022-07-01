@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="greet.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="widgets.js"></script>
+    <script src="game.js"></script>
+    <script src="enoughAirtime.js"></script>
+    <script src="expensiveItems.js"></script>
+    <script src="wordgame.js"></script>
+</head>
+
+<body>
+    <div class="widgetsContainer">
+        <div class="widget">
+            <div x-data="greetWidget">
+                <h2>Greet widget</h2>
+                <div class="message" x-show="greetMessage.length>0" x-text="greetMessage">
+
+                </div>
+                <label for="name">Please enter name: </label>
+                <input type="text" name="name" id="name" x-model="name">
+                <button x-on:click="greetMe">Greet!</button>
+            </div>
+        </div>
+        <div class="widget">
+            <div x-data="{
+            airtimeUsage:'',
+            airtimeAvailable:'0.00',
+            airtimeMessage:'',
+            calculate(){
+                this.airtimeMessage=enoughAirtime(this.airtimeUsage,this.airtimeAvailable)
+            }
+        }">
+                <h2>Telephone Bill Function</h2>
+                <div class="input">
+                    <label for="airtimeUsage">Provide Airtime usage</label>
+                    <input type="text" name="airtimeUsage" id="airtimeUsage" x-model="airtimeUsage">
+                </div>
+
+                <div class="input">
+                    <label for="airtimeAvailable">Available Amount</label>
+                    <input type="text" name="airtimeAvailable" id="airtimeAvailable" x-model="airtimeAvailable">
+                </div>
+                <div class="message" x-text="airtimeMessage">
+                    airtime Available=
+                </div>
+                <div>
+                    <button x-on:click="calculate">Find the Amount</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="widgetsContainer">
+        <div class="widget">
+            <div x-data="gameWidget">
+                <h2>word game</h2>
+                <div class="input">
+                    <label for="word">Give A sentence</label>
+                    <input type="text" name="word" id="word" x-model="sampleWords">
+                    <button x-on:click="gameFunction">Play</button>
+                </div>
+                <div class="message" x-text="gameMessage" style="background-color:green ;"></div>
+                <div class="message" x-text="shortMessage" style="background-color:yellow ;"></div>
+                <div class="message" x-text="lengthMessage" style="background-color:red ;"></div>
+            </div>
+        </div>
+        <div class="widget">
+            <div x-data="{
+                itemList:[
+                        {name : 'apples', qty : 10},
+                        {name : 'pears', qty : 37},
+                        {name : 'bananas', qty : 27},
+                        {name : 'apples', qty : 3},
+                ],
+                numberItems:'0',
+                itemMessage:[],
+                itemFinder(){
+                    this.itemMessage=findItemsOver(this.itemList,this.numberItems)
+                }
+            }">
+                
+                <div class="input">
+                    <label for="noItems">Number of Items:</label>
+                    <input type="text" name="noItems" id="noItems" x-model="numberItems">
+                </div>
+                <div class="message" x-text="itemMessage" style="background-color:green ;"></div>
+                <button x-on:click="itemFinder">Find Items</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

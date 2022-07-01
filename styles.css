@@ -1,0 +1,35 @@
+.message{
+    padding: 1em;
+    background-color: cornflowerblue;
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+}
+.input > label{
+    display: inline-block;
+    width: 15em;
+    padding: 0.5em;
+    font-weight: bold;
+}
+
+.input > input[type="text"] {
+    padding: 0.5em;
+    margin: 0.5em;
+}
+.widgetsContainer{
+    display: flex;
+}
+.widget{
+    flex: 2;
+    border: 2px solid lightgreen;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+.message{
+    text-decoration: wavy;
+    font-weight: bolder;
+}
+
+body{
+    background-color: rgb(47,79,79);
+}
