@@ -21,12 +21,16 @@
         <div class="widget">
             <div x-data="greetWidget">
                 <h2>Greet widget</h2>
+
                 <div class="message" x-show="greetMessage.length>0" x-text="greetMessage">
 
                 </div>
                 <label for="name">Please enter name: </label>
                 <input type="text" name="name" id="name" x-model="name">
                 <button x-on:click="greetMe">Greet!</button>
+                <br>
+                <br>
+                <img src="./image/download.png" style="margin: auto;display: block; border-radius: 10em;">
             </div>
         </div>
         <div class="widget">
@@ -38,7 +42,9 @@
                 this.airtimeMessage=enoughAirtime(this.airtimeUsage,this.airtimeAvailable)
             }
         }">
-                <h2>Telephone Bill Function</h2>
+                <h2>enough Airtime?</h2>
+                <p><strong><h4>game instructions:</h4></strong> users enter the projected usage string and the amount of airtime available. The widget then shows resulting amount from the function on the string</p>
+
                 <div class="input">
                     <label for="airtimeUsage">Provide Airtime usage</label>
                     <input type="text" name="airtimeUsage" id="airtimeUsage" x-model="airtimeUsage">
@@ -61,6 +67,7 @@
         <div class="widget">
             <div x-data="gameWidget">
                 <h2>word game</h2>
+                <p><strong><h4>game instructions:</h4></strong> allows the user to enter and sentence and then display the result of the longestWord, shortestWord & wordLengths on the screen</p>
                 <div class="input">
                     <label for="word">Give A sentence</label>
                     <input type="text" name="word" id="word" x-model="sampleWords">
@@ -72,23 +79,19 @@
             </div>
         </div>
         <div class="widget">
+            <h2>Telephone Bill Function</h2>
+            <p><strong><h4>game instructions:</h4></strong>  Users enter the phone string and press a button to see the total phone bill amount on the screen.</p>
             <div x-data="{
-                itemList:[
-                        {name : 'apples', qty : 10},
-                        {name : 'pears', qty : 37},
-                        {name : 'bananas', qty : 27},
-                        {name : 'apples', qty : 3},
-                ],
-                numberItems:'0',
-                itemMessage:[],
+                items:'',
+                itemMessage:'',
                 itemFinder(){
-                    this.itemMessage=findItemsOver(this.itemList,this.numberItems)
+                    this.itemMessage=totalPhoneBill(this.items)
                 }
             }">
                 
                 <div class="input">
-                    <label for="noItems">Number of Items:</label>
-                    <input type="text" name="noItems" id="noItems" x-model="numberItems">
+                    <label for="noItems">Telephone bill Items:</label>
+                    <input type="text" name="noItems" id="noItems" x-model="items">
                 </div>
                 <div class="message" x-text="itemMessage" style="background-color:green ;"></div>
                 <button x-on:click="itemFinder">Find Items</button>

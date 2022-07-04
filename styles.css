@@ -15,9 +15,7 @@
     padding: 0.5em;
     margin: 0.5em;
 }
-.widgetsContainer{
-    display: flex;
-}
+
 .widget{
     flex: 2;
     border: 2px solid lightgreen;
@@ -32,4 +30,19 @@
 
 body{
     background-color: rgb(47,79,79);
+}
+p{
+    border:2px ridge black;
+}
+@media (min-width:960px) {
+    .widgetsContainer{
+        display: flex;
+    }
+    .widget{
+        flex: 2;
+        border: 2px solid lightgreen;
+        margin: 1em;
+        padding: 1em;
+        border-radius: 0.5em;
+    }
 }
