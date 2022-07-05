@@ -7,13 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="greet.js"></script>
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="widgets.js"></script>
-    <script src="game.js"></script>
-    <script src="enoughAirtime.js"></script>
-    <script src="expensiveItems.js"></script>
-    <script src="wordgame.js"></script>
+    <script src="widgetsFunctions.js"></script>
+    
 </head>
 
 <body>
@@ -38,14 +35,7 @@
             </div>
         </div>
         <div class="widget">
-            <div x-data="{
-            airtimeUsage:'',
-            airtimeAvailable:'0.00',
-            airtimeMessage:'',
-            calculate(){
-                this.airtimeMessage=enoughAirtime(this.airtimeUsage,this.airtimeAvailable)
-            }
-        }">
+            <div x-data="enoughAirtimeWidget">
                 <h2>enough Airtime?</h2>
                 <p><strong><h4>game instructions:</h4></strong> users enter the projected usage string and the amount of airtime available. The widget then shows resulting amount from the function on the string</p>
 
@@ -85,13 +75,7 @@
         <div class="widget">
             <h2>Telephone Bill Function</h2>
             <p><strong><h4>game instructions:</h4></strong>  Users enter the phone string and press a button to see the total phone bill amount on the screen.</p>
-            <div x-data="{
-                items:'',
-                itemMessage:'',
-                itemFinder(){
-                    this.itemMessage=totalPhoneBill(this.items)
-                }
-            }">
+            <div x-data="telephoneBillWidget">
                 
                 <div class="input">
                     <label for="noItems">Telephone bill Items:</label>
