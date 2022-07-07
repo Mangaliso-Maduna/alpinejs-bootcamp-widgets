@@ -3,7 +3,7 @@ function greet(name){
   if(!name){
       return ''
   }
-  return `hello, ${name}`
+  return `merhaba, ${name}`
 }
 
 /*word game function declaration*/
